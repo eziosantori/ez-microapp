@@ -1,0 +1,83 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/microapp-01/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/microapp-01",
+        "index": "apps/microapp-01/src/index.html",
+        "baseHref": "/",
+        "main": "apps/microapp-01/src/main.tsx",
+        "polyfills": "apps/microapp-01/src/polyfills.ts",
+        "tsConfig": "apps/microapp-01/tsconfig.app.json",
+        "assets": [
+          "apps/microapp-01/src/favicon.ico",
+          "apps/microapp-01/src/assets"
+        ],
+        "styles": ["apps/microapp-01/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/microapp-01/src/environments/environment.ts",
+              "with": "apps/microapp-01/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "microapp-01:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "microapp-01:build:development"
+        },
+        "production": {
+          "buildTarget": "microapp-01:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/microapp-01/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/microapp-01"],
+      "options": {
+        "jestConfig": "apps/microapp-01/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
