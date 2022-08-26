@@ -1,21 +1,27 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.scss';
-import NxWelcome from './nx-welcome';
+// import NxWelcome from './nx-welcome';
 
 import { Route, Routes, Link } from 'react-router-dom';
+import { FrameLoader } from './frameLoader';
 
 export function App() {
   return (
     <>
-      <NxWelcome title="main-app" />
-      <div />
-
+      <p>CIAOOOO</p>
+      {/* <NxWelcome title="main-app" /> */}
+      <div>
+        <FrameLoader
+          src="http://localhost:4200/"
+          onTargetMessage={(data) => {
+            console.log(data);
+          }}
+        />
+      </div>
       {/* START: routes */}
       {/* These routes and navigation have been generated for you */}
       {/* Feel free to move and update them to fit your needs */}
-      <br />
-      <hr />
-      <br />
+
       <div role="navigation">
         <ul>
           <li>

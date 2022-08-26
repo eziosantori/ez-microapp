@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "contracts": "libs/contracts",
     "main-app": "apps/main-app",
     "main-app-e2e": "apps/main-app-e2e",
     "microapp-01": "apps/microapp-01",
